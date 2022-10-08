@@ -1,0 +1,270 @@
+$t: rgba(255, 255, 255, 0.001);
+$s: #efe1c4;
+$b: #222;
+$y: #ffda4a;
+$r: #da3743;
+$bl: #1155cb;
+$lb: #446ca8;
+$bg: #5cbbdd;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at top right,
+    lighten($bg, 10%) 0%,
+    $bg 50%
+  );
+  perspective: 1400px;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 100%;
+    opacity: 0.5;
+    box-shadow: 50px 10px 0 -10px #fff, -50px 5px 0 -5px #fff,
+      calc(550px + 50vw) calc(10px - 50px) 0 -10px #fff,
+      calc(500px + 50vw) calc(0px - 50px) 0 0px #fff,
+      calc(450px + 50vw) calc(10px - 50px) 0 -10px #fff,
+      calc(550px + 75vw) calc(10px - 50px) 0 0px #fff,
+      calc(500px + 75vw) calc(0px - 50px) 0 10px #fff,
+      calc(450px + 75vw) calc(10px - 50px) 0 0px #fff,
+      calc(520px + 25vw) calc(10px + 50px) 0 -20px #fff,
+      calc(500px + 25vw) 50px 0 -15px #fff,
+      calc(480px + 25vw) calc(10px + 50px) 0 -20px #fff,
+      calc(540px + 25vw) calc(10px + 55px) 0 -25px #fff,
+      calc(50px + 150vw) 40px 0 -10px #fff, calc(-50px + 150vw) 35px 0 -5px #fff,
+      150vw 30px 0 0 #fff, calc(50px + 200vw) 10px 0 -10px #fff,
+      calc(-50px + 200vw) 5px 0 -5px #fff, 200vw 0 0 0 #fff;
+    animation: sky 2s linear infinite;
+    @keyframes sky {
+      to {
+        transform: translateX(-200vw);
+      }
+    }
+  }
+  div {
+    transform-style: preserve-3d;
+    position: relative;
+    transform: translate(100px, 0px) scale(0.5);
+    z-index: 9;
+    animation: flying 8s ease-in-out infinite alternate;
+    @keyframes flying {
+      20% {
+        transform: translate(150px, 20px) scale(0.45) rotateX(-20deg);
+      }
+      66% {
+        transform: translate(50px, -10px) scale(0.55) rotateX(7.5deg);
+      }
+      100% {
+        transform: translate(150px, 0px) scale(0.55) rotateX(0deg);
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 150vw;
+      height: calc(100% - 60px);
+      top: -20px;
+      left: calc(-150vw - 50px);
+      opacity: 0.75;
+      background: repeating-linear-gradient(
+        to bottom,
+        #fff 0.5px,
+        $t 0.5px,
+        $t 20px,
+        #fff 20px,
+        #fff 20.5px
+      );
+      animation: fly 0.25s linear infinite;
+      mask: repeating-linear-gradient(
+        to right,
+        #000 10px,
+        $t 10px,
+        $t 40px,
+        #000 40px,
+        #000 50px
+      );
+      @keyframes fly {
+        from {
+          mask-position: 0px 50%;
+        }
+        to {
+          mask-position: -100px 50%;
+        }
+      }
+      transform: translateZ(-10px) skewX(-35deg);
+      z-index: -1;
+    }
+    &:after {
+      filter: drop-shadow(1px 0 0 darken($lb, 10%))
+        drop-shadow(0px 1px 0 darken($lb, 10%))
+        drop-shadow(-1px 0px 0 darken($lb, 10%))
+        drop-shadow(0px -1px 0 darken($lb, 10%));
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom, darken($lb, 10%), darken($lb, 10%))
+          700px 486px / 255px 1px no-repeat,
+        linear-gradient(to bottom, darken($lb, 10%), darken($lb, 10%)) 700px
+          430px / 1px 50px no-repeat,
+        linear-gradient(
+            -55deg,
+            $t 45%,
+            lighten($lb, 40%) 10%,
+            lighten($lb, 40%) 60%,
+            $t 50%
+          )
+          54.75px 512.25px / 645px 305px no-repeat,
+        linear-gradient(
+            -65deg,
+            $t 75%,
+            lighten($lb, 40%) 10%,
+            lighten($lb, 40%) 100%,
+            $t 50%
+          )
+          20px 412.25px / 355px 75px no-repeat,
+        linear-gradient(
+            -45deg,
+            $t 45%,
+            lighten($lb, 40%) 10%,
+            lighten($lb, 40%) 60%,
+            $t 50%
+          )
+          149px 512.25px / 645px 305px no-repeat,
+        linear-gradient(45deg, lighten($lb, 30%) 50%, $t 50%) -71.25px 282.25px /
+          496.75px 246px no-repeat,
+        radial-gradient(circle at center, lighten($lb, 30%) 25%, $t 25%) -191.5px
+          246px / 590.5px 562px no-repeat,
+        radial-gradient(ellipse at top left, lighten($lb, 30%) 50%, $t 50%)
+          780.25px 578.25px / 465px 71px no-repeat,
+        radial-gradient(ellipse at bottom left, lighten($lb, 30%) 50%, $t 50%)
+          843.5px 435px / 373.75px 144px no-repeat,
+        radial-gradient(ellipse at bottom left, lighten($lb, 30%) 50%, $t 50%)
+          780.25px 362.5px / 305px 220.25px no-repeat,
+        linear-gradient(to right, lighten($lb, 30%), lighten($lb, 30%)) 80px
+          428px / 730px 200px no-repeat,
+        linear-gradient(
+            60deg,
+            $t 45%,
+            lighten($lb, 20%) 10%,
+            lighten($lb, 20%) 60%,
+            $t 50%
+          )
+          197.75px 282.25px / 499px 246px no-repeat,
+        linear-gradient(
+            45deg,
+            $t 45%,
+            lighten($lb, 20%) 10%,
+            lighten($lb, 20%) 60%,
+            $t 50%
+          )
+          263.5px 282.25px / 499px 246px no-repeat,
+        linear-gradient(
+            60deg,
+            $t 45%,
+            lighten($lb, 20%) 10%,
+            lighten($lb, 20%) 60%,
+            $t 50%
+          )
+          27.75px 302.25px / 199px 246px no-repeat,
+        linear-gradient(
+            45deg,
+            $t 45%,
+            lighten($lb, 20%) 10%,
+            lighten($lb, 20%) 60%,
+            $t 50%
+          )
+          263.5px 282.25px / 499px 246px no-repeat;
+      z-index: -1;
+      left: 50%;
+      top: 50%;
+      transform: translate(calc(-50% - 50px), -50%) translateZ(1px);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, $y 4px, $t 0px) 438px 148px /
+        30px 29px no-repeat,
+      linear-gradient(to right, $y, $y) 438px 162px / 20px 6px no-repeat,
+      radial-gradient(ellipse at center, $s 11px, $t 0px) 392px 193px / 84px
+        78px no-repeat,
+      radial-gradient(ellipse at center, $s 7px, $t 0px) 434px 225px / 34px 43px
+        no-repeat,
+      linear-gradient(-40deg, $t 40%, $s 40%, $s 60%, $t 60%) 433px 225px / 18px
+        67px no-repeat,
+      linear-gradient(-40deg, $t 40%, $r 40%, $r 60%, $t 60%) 422px 234px / 18px
+        67px no-repeat,
+      radial-gradient(ellipse at center, $r 8px, $t 0px) 383px 231px / 82px 87px
+        no-repeat,
+      radial-gradient(ellipse at center, $r 6px, $t 0px) 429px 274px / 18px 19px
+        no-repeat,
+      linear-gradient(30deg, $t 40%, $r 40%, $r 60%, $t 60%) 420px 249px / 18px
+        59px no-repeat,
+      linear-gradient(to right, $y, $y) 408px 222px / 25px 6px no-repeat,
+      linear-gradient(40deg, $t 40%, $s 40%, $s 60%, $t 60%) 433px 190px / 18px
+        97px no-repeat,
+      linear-gradient(25deg, $t 40%, $s 40%, $s 55%, $t 55%) 438px 179px / 42px
+        45px no-repeat,
+      radial-gradient(ellipse at center, $s 9px, $t 0px) 412px 168px / 41px 48px
+        no-repeat,
+      radial-gradient(ellipse at center, $s 5px, $t 0px) 460px 184px / 36px 54px
+        no-repeat,
+      radial-gradient(ellipse at center, $s 7px, $t 0px) 411px 112px / 83px
+        124px no-repeat,
+      radial-gradient(ellipse at center, $r 10px, $t 0px) 410px 175px / 50px
+        49px no-repeat,
+      linear-gradient(110deg, $t 40%, $r 40%, $r 60%, $t 60%) 375px 191px /
+        103px 37px no-repeat,
+      radial-gradient(ellipse at center, $bl 16px, $t 0px) 372px 192px / 103px
+        78px no-repeat,
+      linear-gradient(
+          40deg,
+          $t 40%,
+          darken($s, 10%) 40%,
+          darken($s, 10%) 60%,
+          $t 60%
+        )
+        422px 194px / 22px 97px no-repeat,
+      radial-gradient(ellipse at center, $b 11px, $t 0px) 409px 115px / 78px
+        114px no-repeat,
+      radial-gradient(ellipse at center, $b 11px, $t 0px) 391px 117px / 102px
+        122px no-repeat,
+      radial-gradient(ellipse at center, $b 11px, $t 0px) 391px 117px / 102px
+        122px no-repeat,
+      radial-gradient(ellipse at center, $b 5px, $t 0px) 381px 118px / 102px
+        129px no-repeat,
+      radial-gradient(ellipse at center, $b 4px, $t 0px) 437px 148px / 30px 77px
+        no-repeat,
+      radial-gradient(
+          ellipse at center,
+          lighten($b, 50%) 2px,
+          $t 2px,
+          $t 7px,
+          lighten($b, 50%) 7px,
+          lighten($b, 50%) 10px,
+          $t 0px
+        )
+        460px 190px / 26px 54px no-repeat,
+      radial-gradient(ellipse at center, $r 10px, $t 0px) 420px 245px / 60px
+        39px no-repeat,
+      linear-gradient(
+          25deg,
+          $t 40%,
+          darken($s, 10%) 40%,
+          darken($s, 10%) 55%,
+          $t 55%
+        )
+        425px 185px / 42px 45px no-repeat,
+      linear-gradient(to right, lighten($b, 40%), $t 75%) 473px 214.75px /
+        69.5px 4.5px no-repeat;
+  }
+}
